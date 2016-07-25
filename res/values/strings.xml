@@ -13,5 +13,6 @@
     <string name="refreshBtn">refresh</string>
     <string name="name_hint">enter your name</string>
     <string name="channel_hint">create channel</string>
-
+    <string name="host_hint">host or leave empty</string>
+    <string name="port_hint">port or leave empty</string>
 </resources>

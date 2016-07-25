@@ -24,13 +24,32 @@
         android:ems="10"
         android:hint="@string/channel_hint"
         android:inputType="text" />
-
+    <EditText
+        android:id="@+id/host"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/name"
+        android:layout_below="@+id/channel"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="@string/host_hint"
+        android:inputType="text" />
+    <EditText
+        android:id="@+id/port"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/name"
+        android:layout_below="@+id/host"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="@string/port_hint"
+        android:inputType="text" />
     <Button
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/channel"
-        android:layout_below="@+id/channel"
+        android:layout_below="@+id/port"
         android:layout_marginTop="22dp"
         android:minHeight="40dip"
         android:minWidth="@dimen/join_weight"

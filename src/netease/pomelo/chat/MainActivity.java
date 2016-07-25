@@ -24,15 +24,19 @@ public class MainActivity extends Activity implements OnClickListener {
 	private TextView errorTv;
 	private EditText nameTxt;
 	private EditText channelTxt;
+	private EditText hostTxt;
+	private EditText portTxt;
 	private Button loginBtn;
 	public PomeloClient client;
 	private String name;
 	private String channel;
 	private String[] users;
+	private  String host;
+	private  String port;
 	private ChatApplication chatApp;
-	private String reg = "^[a-zA-Z0-9_\u4e00-\u9fa5]{1,10}$";
+	private String reg = "^[@a-zA-Z0-9_\u4e00-\u9fa5]{1,10}$";
 	private String test_host = "127.0.0.1";
-	private int test_port = 3014;
+	private int test_port = 3010;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +46,15 @@ public class MainActivity extends Activity implements OnClickListener {
 		nameTxt = (EditText) findViewById(R.id.name);
 		channelTxt = (EditText) findViewById(R.id.channel);
 		errorTv = (TextView) findViewById(R.id.error);
+		hostTxt =  (EditText) findViewById(R.id.host);
+		portTxt = (EditText) findViewById(R.id.port);
 		loginBtn = (Button) findViewById(R.id.login);
 		loginBtn.setOnClickListener(this);
-
+		String loginName = android.os.Build.MODEL.replace(" ","");
+		nameTxt.setText(loginName);
+		channelTxt.setText("123");
+		hostTxt.setText("10.0.0.88");
+		portTxt.setText("3014");
 		chatApp = (ChatApplication) getApplication();
 	}
 
@@ -62,7 +72,9 @@ public class MainActivity extends Activity implements OnClickListener {
 			errorTv.setText("Name/Channel is not legal.");
 			return;
 		}
-		client = new PomeloClient(test_host, test_port);
+		host = hostTxt.getText().toString();
+		port = portTxt.getText().toString();
+		client = new PomeloClient(host, Integer.valueOf(port));
 		client.init();
 		queryEntry();
 	}

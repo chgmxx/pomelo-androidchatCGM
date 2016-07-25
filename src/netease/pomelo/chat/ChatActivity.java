@@ -67,8 +67,9 @@ public class ChatActivity extends Activity implements OnClickListener {
 		client.on("onChat", new DataListener() {
 			@Override
 			public void receiveData(DataEvent event) {
-				JSONObject msg = event.getMessage();
+				JSONObject body = event.getMessage();
 				try {
+					JSONObject msg = body.getJSONObject("body");
 					from = msg.getString("from");
 					aim = msg.getString("target");
 					content = msg.getString("msg");
