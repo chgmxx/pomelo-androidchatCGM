@@ -1,16 +1,9 @@
 package netease.pomelo.chat;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import com.netease.pomelo.DataCallBack;
-import com.netease.pomelo.PomeloClient;
-import android.os.Bundle;
-import android.os.Handler;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +11,16 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.netease.pomelo.DataCallBack;
+import com.netease.pomelo.PomeloClient;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends Activity implements OnClickListener {
 
@@ -34,9 +37,9 @@ public class MainActivity extends Activity implements OnClickListener {
 	private  String host;
 	private  String port;
 	private ChatApplication chatApp;
-	private String reg = "^[@a-zA-Z0-9_\u4e00-\u9fa5]{1,10}$";
-	private String test_host = "127.0.0.1";
-	private int test_port = 3010;
+	private String reg = "^[@a-zA-Z0-9_\u4e00-\u9fa5]{1,15}$";
+	private String test_host = "10.0.0.88";
+	private int test_port = 3014;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +54,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		loginBtn = (Button) findViewById(R.id.login);
 		loginBtn.setOnClickListener(this);
 		String loginName = android.os.Build.MODEL.replace(" ","");
-		nameTxt.setText(loginName);
+		nameTxt.setText("13599916195");
 		channelTxt.setText("123");
 		hostTxt.setText("10.0.0.88");
 		portTxt.setText("3014");
@@ -127,6 +130,7 @@ public class MainActivity extends Activity implements OnClickListener {
 					client.disconnect();
 					client = new PomeloClient(test_host, test_port);
 					client.init();
+					errorTv.setText("Name or Password invalid");
 					return;
 				}
 				try {
